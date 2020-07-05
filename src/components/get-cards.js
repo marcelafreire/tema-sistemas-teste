@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Card from '../models/cards-model'
 
 function GetCards() {
   const [cards, setCards] = useState([]);
@@ -46,13 +45,20 @@ function GetCards() {
 
 
   //Adicionar carta
-  function handleAddCard(e) {
-      e.preventDefault();
-      const cardsDb = localStorage['myCards'];
-      const cards = cardsDb ? JSON.parse(cardsDb) : [];
+  function handleAddCard(cardId) {
+    console.log('clicou')
+    const cardsDb = localStorage['myCards'];
+    const newCards = cardsDb ? JSON.parse(cardsDb) : [];
 
-      cards.push(new Card(new Date().getTime(), myCards, false));
-      localStorage['cards'] = JSON.stringify(cards);
+    cards.forEach((obj) => {
+      if (obj.cardId === cardId) {
+        return newCards.push(obj)
+      }
+    });
+
+    setMyCards(newCards)
+    localStorage['myCards'] = JSON.stringify(myCards);
+  
   }
 
 
@@ -69,7 +75,7 @@ function GetCards() {
         filteredCard.map(card => 
             <div key={card.cardId}>
            <img src={card.img} alt={card.cardId} />
-           <button type="submit" onClick={handleAddCard}>Adicionar Carta</button>
+           <button type="submit" onClick={() => handleAddCard(card.cardId)}>Adicionar Carta</button>
             </div>
     )
       }
