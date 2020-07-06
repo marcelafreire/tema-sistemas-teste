@@ -11,17 +11,28 @@ function MyCards({ cards, handleAddCard, myCards }) {
       setCarregarCards(false);
       handleAddCard();
     }
-
   }, [carregarCards, cards, handleAddCard, myCards]);
+
+  function handleDelete(idx) {
+      const cardsDb = localStorage['myCards'];
+      let newCards = cardsDb ? JSON.parse(cardsDb) : [];
+      newCards.splice(idx, 1);
+
+    localStorage['myCards'] = JSON.stringify(newCards);
+      setCarregarCards(true);
+  }
 
   return (
     <div>
       <h2>COPY CARDS</h2>
       <h1>hey</h1>
       {
-          myCards.map((card) => (
-        <div key={card.cardId}>
+          myCards.map((card, idx) => (
+        <div key={idx}>
           <img src={card.img} alt={card.cardId} />
+          <button onClick={() => handleDelete(idx)}>remover carta</button>
+          <button>alterar carta</button>
+
         </div>
       ))
       }
