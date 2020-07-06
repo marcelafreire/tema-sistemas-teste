@@ -5,6 +5,7 @@ function GetCards() {
   const [cards, setCards] = useState([]);
   const [carregarCards, setCarregarCards] = useState(true);
   const [myCards, setMyCards] = useState([]);
+  const click_ref = React.useRef(null);
 
 
   //Pegar lista de cartas
@@ -36,15 +37,7 @@ function GetCards() {
         });
     }
 
-    if (carregarCards) {
-      getCards();
-      setCarregarCards(false);
-    }
-  }, [carregarCards, cards]);
-
-
-
-  //Adicionar carta
+     //Adicionar carta
   function handleAddCard(cardId) {
     console.log('clicou')
     const cardsDb = localStorage['myCards'];
@@ -55,11 +48,25 @@ function GetCards() {
         return newCards.push(obj)
       }
     });
+    setMyCards(newCards);
+    // localStorage.setItem('myCards', JSON.stringify(myCards))
+    localStorage['myCards'] = JSON.stringify(newCards);
 
-    setMyCards(newCards)
-    localStorage['myCards'] = JSON.stringify(myCards);
-  
+
   }
+
+    if (carregarCards) {
+      getCards();
+      setCarregarCards(false);
+      handleAddCard();
+    }
+
+  click_ref.current = handleAddCard;
+
+
+  }, [carregarCards, cards, myCards]);
+
+
 
 
   const filteredCard = cards.filter(
@@ -75,14 +82,20 @@ function GetCards() {
         filteredCard.map(card => 
             <div key={card.cardId}>
            <img src={card.img} alt={card.cardId} />
-           <button type="submit" onClick={() => handleAddCard(card.cardId)}>Adicionar Carta</button>
+           <button type="submit" onClick={() => click_ref.current(card.cardId)}>Adicionar Carta</button>
             </div>
     )
       }
 
       <h2>COPY CARDS</h2>
+      <h1>hey</h1>
       {
-          
+
+        myCards.map(card => 
+            <div key={card.cardId}>
+           <img src={card.img} alt={card.cardId} />
+            </div>
+    )
       }
     </div>
   );
