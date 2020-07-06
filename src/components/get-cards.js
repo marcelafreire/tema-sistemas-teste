@@ -1,59 +1,11 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 
-function GetCards() {
-  const [cards, setCards] = useState([]);
+function GetCards({cards, getCards, myCards, handleAddCard}) {
   const [carregarCards, setCarregarCards] = useState(true);
-  const [myCards, setMyCards] = useState([]);
   const click_ref = React.useRef(null);
 
 
-  //Pegar lista de cartas
   useEffect(() => {
-    function getCards() {
-      axios({
-        method: "GET",
-        url: "https://omgvamp-hearthstone-v1.p.rapidapi.com/cards",
-        headers: {
-          "content-type": "application/octet-stream",
-          "x-rapidapi-host": "omgvamp-hearthstone-v1.p.rapidapi.com",
-          "x-rapidapi-key":
-            "174f54c7e9msh385aea11f59db8ep1eecbfjsna5431ab42c87",
-          useQueryString: true,
-          params: {
-            locale: "ptBR",
-          },
-        },
-      })
-        .then((response) => {
-          const filteredCards = response.data.Basic.map((card) => card.attack);
-          //   console.log(cards, 'cards')
-          if (filteredCards !== undefined) {
-            setCards(response.data.Basic);
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-
-     //Adicionar carta
-  function handleAddCard(cardId) {
-    console.log('clicou')
-    const cardsDb = localStorage['myCards'];
-    const newCards = cardsDb ? JSON.parse(cardsDb) : [];
-
-    cards.forEach((obj) => {
-      if (obj.cardId === cardId) {
-        return newCards.push(obj)
-      }
-    });
-    setMyCards(newCards);
-    // localStorage.setItem('myCards', JSON.stringify(myCards))
-    localStorage['myCards'] = JSON.stringify(newCards);
-
-
-  }
 
     if (carregarCards) {
       getCards();
@@ -62,9 +14,7 @@ function GetCards() {
     }
 
   click_ref.current = handleAddCard;
-
-
-  }, [carregarCards, cards, myCards]);
+  }, [carregarCards, cards, myCards, getCards, handleAddCard]);
 
 
 
@@ -83,17 +33,6 @@ function GetCards() {
             <div key={card.cardId}>
            <img src={card.img} alt={card.cardId} />
            <button type="submit" onClick={() => click_ref.current(card.cardId)}>Adicionar Carta</button>
-            </div>
-    )
-      }
-
-      <h2>COPY CARDS</h2>
-      <h1>hey</h1>
-      {
-
-        myCards.map(card => 
-            <div key={card.cardId}>
-           <img src={card.img} alt={card.cardId} />
             </div>
     )
       }
