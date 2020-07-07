@@ -1,0 +1,30 @@
+:root {
+  --color-primary: #e7d5a7;
+  }
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  --color-primary: #e7d5a7;
+}
+
+html {
+  font-size: 62.5%; //1rem = 10px
+  background-color: var(--color-primary);
+}
+
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.7;
+  padding: 3rem;
+  box-sizing: border-box;
+  background-color: var(--color-primary) !important;
+}
+
+

@@ -1,22 +1,22 @@
-function Card(cardId, name, type, health, attack, img, playerClass, text) {
+function Card(cardId, name, health, attack, type, playerClass, description, img) {
     this.cardId = cardId;
     this.name = name;
-    this.type = type;
     this.health = health;
     this.attack = attack;
-    this.img = img;
+    this.type = type;
     this.playerClass = playerClass;
-    this.text = text;
+    this.description = description;
+    this.img = 'https://res.cloudinary.com/deyy3glzl/image/upload/v1594143132/card.png';
   
     return {
         cardId: cardId,
-        name: name,
-        type: type,
         health: health,
+        name: name,
         attack: attack,
-        img: img,
+        type: type,
         playerClass: playerClass,
-        text: text
+        description: description,
+        img: 'https://res.cloudinary.com/deyy3glzl/image/upload/v1594143132/card.png'
     };
   }
   

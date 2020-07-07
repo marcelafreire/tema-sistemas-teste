@@ -1,20 +1,22 @@
 import React, { useState } from "react";
-import "./App.css";
 import axios from "axios";
 import { Route, Switch } from "react-router-dom";
 import MyCards from "./components/my-cards";
 import GetCards from "./components/get-cards";
+import IncluirCard from "./components/incluir-carta";
+import EditCard from "./components/editar-card";
+import './style/sass/style.css'
+
 
 function App() {
   const [cards, setCards] = useState([]);
   const [myCards, setMyCards] = useState([]);
-  const [searchName, setSearchName] = useState("");
-  const [searchId, setSearchId] = useState("");
-  const [searchType, setSearchType] = useState("");
-  const [searchClass, setSearchClass] = useState("");
-
-
-
+  const [search, setSearch] = useState({
+    searchName: "",
+    searchId: "",
+    searchType: "",
+    searchClass: "",
+  });
 
   //Pegar cards da api
   function getCards() {
@@ -43,8 +45,6 @@ function App() {
       });
   }
 
-
-
   //copiar carta para 'minhas cartas'
   function handleAddCard(cardId) {
     const cardsDb = localStorage["myCards"];
@@ -59,39 +59,15 @@ function App() {
     localStorage["myCards"] = JSON.stringify(newCards);
   }
 
-
   //pesquisas
-  const handleSearch = (e) => {
-    const value = e.target.value;
-    setSearchName({
-      [e.target.name]: value
-    });
-
-    setSearchId({
-      [e.target.name]: value
-    });
-
-    setSearchType({
-      [e.target.name]: value
-    });
-
-    setSearchClass({
-      [e.target.name]: value
+  const handleSearch = (evt) => {
+    const value = evt.target.value;
+    setSearch({
+      ...search,
+      [evt.target.name]: value,
     });
   };
 
-  // const handleSearchId = (e) => {
-  //   setSearchId(e.target.value);
-  // };
-
-
-
-  
-
-
-
-
-  console.log(cards, "data");
 
   return (
     <div className="App">
@@ -104,11 +80,8 @@ function App() {
             render={(props) => (
               <GetCards
                 cards={cards}
-                handleSearch={handleSearch}
-                searchName={searchName}
-                searchId={searchId}
-                searchType={searchType}
-                searchClass={searchClass}
+                // handleSearch={handleSearch}
+                // search={search}
                 getCards={getCards}
                 myCards={myCards}
                 handleAddCard={handleAddCard}
@@ -118,15 +91,29 @@ function App() {
           />
           <Route
             exact
-            path="/minhas-cartas"
+            path="/minhas-cartas/"
             render={(props) => (
               <MyCards
                 cards={cards}
                 myCards={myCards}
                 handleAddCard={handleAddCard}
+                handleSearch={handleSearch}
+                search={search}
                 {...props}
               />
             )}
+          />
+
+          <Route
+            exact
+            path="/incluir-card"
+            render={(props) => <IncluirCard />}
+          />
+
+          <Route
+            exact
+            path="/editar-card/:id"
+            render={(props) => (<EditCard myCards={myCards} handleAddCard={handleAddCard} {...props} />)}
           />
         </Switch>
       </div>
