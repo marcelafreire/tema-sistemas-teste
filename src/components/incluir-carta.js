@@ -54,13 +54,13 @@ function IncluirCard() {
   }
 
   function handleFecharModal() {
-    navigate("/minhas-cartas");
+    navigate("/meus-cards");
     setExibirModal(false)
   }
 
   return (
-    <div>
-      <h3 className="text-center">Cadastrar</h3>
+    <div className="form">
+      <h3>Adicionar novo card</h3>
       <Jumbotron>
         <Form validated={formValidado} noValidate onSubmit={cadastrar}>
           <Form.Group>

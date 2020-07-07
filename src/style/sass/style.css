@@ -1,5 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Acme&display=swap");
 :root {
   --color-primary: #e7d5a7;
+  --color-secondary: #731b19;
+  --color-secondary-dark: #58100f;
+  --white: #ffffff;
+  --black: #000000;
+  --box-shadow: 0 2rem 6rem rgba(0, 0, 0, .3);
 }
 
 *,
@@ -8,7 +14,6 @@
   margin: 0;
   padding: 0;
   box-sizing: inherit;
-  --color-primary: #e7d5a7;
 }
 
 html {
@@ -21,9 +26,166 @@ body {
   font-weight: 400;
   font-size: 1.6rem;
   line-height: 1.7;
-  padding: 3rem;
+  padding: 0;
   box-sizing: border-box;
   background-color: var(--color-primary) !important;
+  width: 100%;
+}
+
+.nav {
+  background-color: var(--color-secondary);
+  height: 8rem;
+  font-family: "Acme", sans-serif;
+  font-size: 2rem;
+}
+.nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
+.nav ul a {
+  color: var(--color-secondary);
+  border: 2px solid var(--color-secondary-dark);
+  border-radius: 1.5rem;
+  background-color: var(--color-primary);
+  padding: 0 0.9rem;
+  box-shadow: var(--box-shadow);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.nav ul a :visited {
+  color: var(--white);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+.container h1 {
+  font-family: "Acme", sans-serif;
+  font-size: 4.6rem;
+}
+.container .searchBar {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4rem 0;
+}
+.container .searchBar .search-input {
+  background-color: var(--white);
+  margin: 0 1rem;
+  border-radius: 1.5rem;
+  padding-top: 0.2rem;
+  width: 22rem;
+  height: 4rem;
+  box-shadow: var(--box-shadow);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container .searchBar .search-input input {
+  border-style: none;
+  border-radius: 1rem;
+  outline: none;
+}
+.container .searchBar .search-input svg {
+  margin: 0 1rem;
+}
+.container .cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+.container .cards-container img {
+  width: 80%;
+}
+.container .cards-container .cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0.5rem 0.1rem;
+  text-align: center;
+  width: 30%;
+}
+.container .cards-container .cards p {
+  font-family: "Acme", sans-serif;
+  font-size: 2.3rem;
+}
+.container .cards-container .cards h4:nth-child(5) {
+  display: flex;
+}
+.container .cards-container .cards h3 {
+  font-family: "Acme", sans-serif;
+  font-size: 2rem;
+}
+.container .cards-container .cards .cardText {
+  width: 50%;
+}
+.container .cards-container .cards .btn-add-card {
+  border-style: none;
+  border-radius: 2rem;
+  background-color: var(--color-secondary);
+  width: 8rem;
+  height: 3rem;
+  color: var(--white);
+  outline: none;
+  transition: all 0.2s;
+}
+.container .cards-container .cards .btn-add-card:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+.container .cards-container .btn-group button {
+  background-color: var(--color-secondary);
+  border-style: none;
+  margin-right: 0.2rem;
+  padding: 0.1rem 0.2rem;
+  border-radius: 1rem;
+}
+.container .cards-container .btn-group a {
+  background-color: var(--color-secondary);
+  border-style: none;
+  margin-left: 0.2rem;
+  padding: 0.1rem 0.1rem 0.1rem 0.2rem;
+  border-radius: 1rem;
+}
+.container .cards-container .btn-group svg {
+  color: var(--white);
+  width: 3rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.form h3 {
+  font-family: "Acme", sans-serif;
+  margin: 2rem;
+  font-size: 3rem;
+}
+.form .jumbotron {
+  width: 50%;
+  background-color: transparent;
+}
+.form .form-control {
+  font-size: 2rem;
+  margin: 1rem;
+}
+.form .btn {
+  width: 12rem;
+  height: 3rem;
+  font-size: 1.5rem;
 }
 
 /*# sourceMappingURL=style.css.map */

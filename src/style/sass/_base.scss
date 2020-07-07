@@ -1,5 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
 :root {
   --color-primary: #e7d5a7;
+
+  --color-secondary: #731b19;
+  --color-secondary-dark: #58100f;
+
+  --white: #ffffff;
+  --black: #000000;
+
+  --box-shadow: 0 2rem 6rem rgba(0, 0, 0, .3);
+
+
   }
 
 *,
@@ -8,7 +20,9 @@
   margin: 0;
   padding: 0;
   box-sizing: inherit;
-  --color-primary: #e7d5a7;
+
+  
+
 }
 
 html {
@@ -22,9 +36,10 @@ body {
   font-weight: 400;
   font-size: 1.6rem;
   line-height: 1.7;
-  padding: 3rem;
+  padding: 0;
   box-sizing: border-box;
   background-color: var(--color-primary) !important;
+  width: 100%;
 }
 
 

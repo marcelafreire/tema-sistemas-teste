@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, Form, Jumbotron, Modal } from 'react-bootstrap';
 import { navigate, A } from 'hookrouter';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../style/style.css'
 
 
 function EditCard({myCards, handleAddCard}) {
@@ -85,7 +86,7 @@ function EditCard({myCards, handleAddCard}) {
   return (
     <div>
       <h3 className="text-center">Editar card</h3>
-      <Jumbotron>
+      <Jumbotron className="form">
         <Form onSubmit={edit} noValidate validated={formValidado}>
           <Form.Group>
             <Form.Control

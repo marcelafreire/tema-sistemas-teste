@@ -6,11 +6,14 @@ import GetCards from "./components/get-cards";
 import IncluirCard from "./components/incluir-carta";
 import EditCard from "./components/editar-card";
 import './style/sass/style.css'
+import NavBar from "./components/navbar";
 
 
 function App() {
   const [cards, setCards] = useState([]);
   const [myCards, setMyCards] = useState([]);
+  const [exibirMsg, setExibirMsg] = useState(false);
+  const [erroMsg, setErroMsg] = useState(false);
   const [search, setSearch] = useState({
     searchName: "",
     searchId: "",
@@ -45,6 +48,7 @@ function App() {
       });
   }
 
+
   //copiar carta para 'minhas cartas'
   function handleAddCard(cardId) {
     const cardsDb = localStorage["myCards"];
@@ -53,11 +57,23 @@ function App() {
     cards.forEach((obj) => {
       if (obj.cardId === cardId && newCards.length < 30) {
         return newCards.push(obj);
+      } else {
+        setErroMsg(true)
       }
     });
     setMyCards(newCards);
     localStorage["myCards"] = JSON.stringify(newCards);
+    exibirMensagem(cardId)
   }
+
+  //exibir Mensagem de
+  function exibirMensagem(card) {
+    setExibirMsg(true);
+    setTimeout(() => {
+      setExibirMsg(false)
+    }, 2000);
+  }
+
 
   //pesquisas
   const handleSearch = (evt) => {
@@ -71,8 +87,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Hey</h1>
-      <div>
+      <NavBar />
         <Switch>
           <Route
             exact
@@ -80,18 +95,20 @@ function App() {
             render={(props) => (
               <GetCards
                 cards={cards}
-                // handleSearch={handleSearch}
-                // search={search}
+                handleSearch={handleSearch}
+                search={search}
                 getCards={getCards}
                 myCards={myCards}
                 handleAddCard={handleAddCard}
+                exibirMsg={exibirMsg}
+                erroMsg={erroMsg}
                 {...props}
               />
             )}
           />
           <Route
             exact
-            path="/minhas-cartas/"
+            path="/meus-cards"
             render={(props) => (
               <MyCards
                 cards={cards}
@@ -116,7 +133,6 @@ function App() {
             render={(props) => (<EditCard myCards={myCards} handleAddCard={handleAddCard} {...props} />)}
           />
         </Switch>
-      </div>
     </div>
   );
 }

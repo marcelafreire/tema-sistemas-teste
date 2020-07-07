@@ -6,7 +6,7 @@ function Card(cardId, name, health, attack, type, playerClass, description, img)
     this.type = type;
     this.playerClass = playerClass;
     this.description = description;
-    this.img = 'https://res.cloudinary.com/deyy3glzl/image/upload/v1594143132/card.png';
+    this.img = 'https://res.cloudinary.com/deyy3glzl/image/upload/v1594156699/card_lcvzxk.png';
   
     return {
         cardId: cardId,
@@ -16,7 +16,7 @@ function Card(cardId, name, health, attack, type, playerClass, description, img)
         type: type,
         playerClass: playerClass,
         description: description,
-        img: 'https://res.cloudinary.com/deyy3glzl/image/upload/v1594143132/card.png'
+        img: 'https://res.cloudinary.com/deyy3glzl/image/upload/v1594156699/card_lcvzxk.png'
     };
   }
   

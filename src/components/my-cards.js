@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 // import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faSearch,
+  faTrashAlt,
+  faEdit,
+} from "@fortawesome/free-solid-svg-icons";
 
 function MyCards({ cards, handleAddCard, myCards, handleSearch, search }) {
   const [carregarCards, setCarregarCards] = useState(true);
@@ -44,50 +50,77 @@ function MyCards({ cards, handleAddCard, myCards, handleSearch, search }) {
 
   console.log(myCards, "myCards");
   return (
-    <div>
-      <div>
-        <input
-        placeholder="name"
-          type="text"
-          name="searchName"
-          value={search.searchName}
-          onChange={handleSearch}
-        />
-        <input
-          type="text"
-          name="searchId"
-          placeholder="filtrar carta por Id"
-          value={search.searchId}
-          onChange={handleSearch}
-        ></input>
-        <input
-          name="searchType"
-          type="text"
-          placeholder="filtrar carta por Classe"
-          value={search.searchType}
-          onChange={handleSearch}
-        ></input>
-        <input
-          name="searchClass"
-          type="text"
-          placeholder="filtrar carta por Tipo"
-          value={search.searchClass}
-          onChange={handleSearch}
-        ></input>
+    <div className="container">
+      <div className="searchBar">
+        <div className="search-input">
+          <FontAwesomeIcon icon={faSearch} />
+          <input
+            placeholder="name"
+            type="text"
+            name="searchName"
+            value={search.searchName}
+            onChange={handleSearch}
+          />
+        </div>
+
+        <div className="search-input">
+          <FontAwesomeIcon icon={faSearch} />
+          <input
+            type="text"
+            name="searchId"
+            placeholder="filtrar carta por Id"
+            value={search.searchId}
+            onChange={handleSearch}
+          ></input>
+        </div>
+
+        <div className="search-input">
+          <FontAwesomeIcon icon={faSearch} />
+          <input
+            name="searchType"
+            type="text"
+            placeholder="filtrar carta por Tipo"
+            value={search.searchType}
+            onChange={handleSearch}
+          ></input>
+        </div>
+
+        <div className="search-input">
+          <FontAwesomeIcon icon={faSearch} />
+          <input
+            name="searchClass"
+            type="text"
+            placeholder="filtrar carta por Classe"
+            value={search.searchClass}
+            onChange={handleSearch}
+          ></input>
+        </div>
       </div>
 
-      <h2>Minhas Cartas</h2>
-
-      {myCards.map((card, idx) => (
-        <div key={idx}>
-          <img src={card.img} alt={card.cardId} />
-          <h3>{card.name}</h3>
-          <h3>{card.type}</h3>
-          <h3>{card.playerClass}</h3>
-          <button onClick={() => handleDelete(idx)}>remover carta</button>
-          <Link to={`/editar-card/${card.cardId}`}>Alterar Carta</Link>
-        </div>
-      ))}
+      <h1>Minhas Cartas</h1>
+      <div className="cards-container">
+        {myCards.map((card, idx) => (
+          <div key={idx} className="cards">
+            <img src={card.img} alt={card.cardId} />
+            <h3>{card.name}</h3>
+            <h4>Tipo: {card.type}</h4>
+            <h4>Classe: {card.playerClass}</h4>
+            <h4>Ataque: &nbsp;<p>{card.attack}</p> &nbsp; Defesa: &nbsp;<p>{card.health}</p></h4>
+            <span className="cardText">
+              <h4>{card.description}</h4>
+              <h4>{card.text}</h4>
+            </span>
+            <span className="btn-group">
+              <button onClick={() => handleDelete(idx)}>
+                <FontAwesomeIcon icon={faTrashAlt} />
+              </button>
+              <Link to={`/editar-card/${card.cardId}`}>
+                <FontAwesomeIcon icon={faEdit} />
+              </Link>
+            </span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
