@@ -27,15 +27,12 @@ function EditCard({myCards, handleAddCard, id}) {
       const cardsDb = localStorage['myCards'];
       const allCards = cardsDb  ? JSON.parse(cardsDb ) : [];
       const cards = allCards.filter(card => card.cardId === id);
-      console.log(cards, 'cards')
 
       setCard(cards);
       setCarregarCards(false);
     }
   }, [carregarCards, myCards, handleAddCard, id]);
 
-
-console.log(id, 'id')
 
   function goBack(event) {
     event.preventDefault();

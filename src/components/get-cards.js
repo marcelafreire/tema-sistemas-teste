@@ -55,7 +55,6 @@ function GetCards({
       item.playerClass.toLowerCase().includes(search.searchClass)
     );
   }
-  console.log(myCards, 'mycards')
 
   return (
     <div className="container">
@@ -113,12 +112,12 @@ function GetCards({
         Card adicionado aos Meus Cards
       </Alert>
 
-      <Alert
+      {/* <Alert
         variant="warning"
         style={{ margin: '10px' }}
         show={exibirMsg}>
         Você chegou ao seu limite de cartas
-      </Alert>
+      </Alert> */}
 
       <div className="cards-container">
       

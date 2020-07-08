@@ -18,7 +18,7 @@ function IncluirCard() {
   const [exibirModal, setExibirModal] = useState(false);
 
 
-  function cadastrar(event) {
+  function addNewCard(event) {
     event.preventDefault();
     setFormValidado(true);
     if (event.currentTarget.checkValidity() === true) {
@@ -62,7 +62,7 @@ function IncluirCard() {
     <div className="form">
       <h3>Adicionar novo card</h3>
       <Jumbotron>
-        <Form validated={formValidado} noValidate onSubmit={cadastrar}>
+        <Form validated={formValidado} noValidate onSubmit={addNewCard}>
           <Form.Group>
             <Form.Control
               name="name"

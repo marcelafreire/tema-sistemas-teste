@@ -62,7 +62,6 @@ function MyCards({ cards, handleAddCard, myCards, handleSearch, search, getId, i
     );
   }
 
-  console.log(myCards, "myCards");
   return (
     <div>
     <div>

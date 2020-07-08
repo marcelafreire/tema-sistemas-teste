@@ -77,6 +77,7 @@ function App() {
     exibirMensagem(cardId)
   }
 
+  
   //exibir Mensagem de erro e sucesso
   function exibirMensagem(card) {
     setExibirMsg(true);
