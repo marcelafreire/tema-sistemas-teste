@@ -154,7 +154,7 @@ function IncluirCard() {
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group className="text-center">
-            <Button variant="success" type="submit" data-testid="btn-cadastrar">
+            <Button  type="submit">
               Cadastrar
             </Button>
             &nbsp;
@@ -166,7 +166,6 @@ function IncluirCard() {
         <Modal
           show={exibirModal}
           onHide={handleFecharModal}
-          data-testid="modal"
         >
           <Modal.Header closeButton>
             <Modal.Title>Sucesso</Modal.Title>

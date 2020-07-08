@@ -1,15 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
 :root {
-  --color-primary: #e7d5a7;
+  --color-primary: #303452;
 
-  --color-secondary: #731b19;
-  --color-secondary-dark: #58100f;
+  --color-secondary: #161a25;
+  --color-secondary-dark: #151827;
 
   --white: #ffffff;
+  --white-medium: #e7e6e6;
   --black: #000000;
 
   --box-shadow: 0 2rem 6rem rgba(0, 0, 0, .3);
+
+  --color-blue-primary: #161a25;
+  --color-blue-primary-dark: #05060a;
+
+  --color-purple-primary-dark: #303452;
+  --color-purple-primary-light: #5d556a;
+  --color-purple-primary-medium: #525492;
+
 
 
   }
@@ -38,7 +47,7 @@ body {
   line-height: 1.7;
   padding: 0;
   box-sizing: border-box;
-  background-color: var(--color-primary) !important;
+  background-image: linear-gradient(to left top, var(--color-blue-primary), var(--color-purple-primary-dark));
   width: 100%;
 }
 

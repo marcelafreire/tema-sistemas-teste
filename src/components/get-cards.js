@@ -122,7 +122,7 @@ function GetCards({
       <div className="cards-container">
       
       {filteredCard.map((card) => (
-        <div key={card.cardId} className="cards">
+        <div key={card.cardId} className="cards home">
           <img src={card.img && card.img} alt={card.cardId} />
           <h3>{card.name}</h3>
           <button className="btn-add-card" type="submit" onClick={() => click_ref.current(card.cardId)}>

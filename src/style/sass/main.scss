@@ -3,8 +3,9 @@
 .nav {
   background-color: var(--color-secondary);
   height: 8rem;
-  font-family: "Acme", sans-serif;
-  font-size: 2rem;
+  font-size: 1.7rem;
+  box-shadow: var(--box-shadow);
+
   ul {
     list-style: none;
     display: flex;
@@ -13,18 +14,27 @@
     width: 100%;
 
     a {
-      color: var(--color-secondary);
-      border: 2px solid var(--color-secondary-dark);
-      border-radius: 1.5rem;
-      background-color: var(--color-primary);
-      padding: 0 0.9rem;
-      box-shadow: var(--box-shadow);
+      color: var(--white);
+    //   border-radius: 1.2rem;
+    //   background-image: linear-gradient(to left top, var(--color-purple-primary-medium), var(--color-purple-primary-light));      
+    //   width: 20rem;
+    //   height: 3.3rem;
+    //   box-shadow: var(--box-shadow);
       text-decoration: none;
-      transition: all 0.2s;
+      transition: all 0.4s;
+      text-align: center;
 
       :visited {
         color: var(--white);
+
       }
+      :hover {
+        border-radius: 1.2rem;
+        width: 22rem;
+        background-color: var(--white);  
+        color: var(--color-blue-primary-dark);
+        box-shadow: 0 1rem 2rem rgba(black, 0.2); 
+    }
     }
   }
 }
@@ -35,10 +45,12 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
+  color: var(--white);
    
   h1 {
     font-family: "Acme", sans-serif;
     font-size: 4.6rem;
+    margin: 2rem;
   }
   .searchBar {
       flex-wrap: wrap;
@@ -48,22 +60,31 @@
     margin: 4rem 0;
 
     .search-input {
-      background-color: var(--white);
+      background-color: transparent;
       margin: 0 1rem;
       border-radius: 1.5rem;
       padding-top: 0.2rem;
       width: 22rem;
-      height: 4rem;
+      height: 3.5rem;
       box-shadow: var(--box-shadow);
       text-align: center;
       display: flex;
       justify-content: center;
       align-items: center;
+      border: 1px solid var(--color-secondary);
 
       input {
         border-style: none;
         border-radius: 1rem;
         outline: none;
+        background-color: transparent;
+        color: var(--white);
+
+    
+        &::placeholder{
+            color: var(--white);
+          }
+
       }
 
       svg {
@@ -78,6 +99,7 @@
       flex-wrap: wrap;
       justify-content: center;
       width: 100%;
+      color: var(--white);
 
 
       img {
@@ -89,9 +111,12 @@
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        margin: 0.5rem 0.1rem;
+        margin: 1rem 0.5rem;
         text-align: center;
-        width: 30%;
+        width: 25%;
+        box-shadow: var(--box-shadow);
+        background-color: var(--color-purple-primary-dark);
+        border-radius: 2rem;
 
         p{
             font-family: "Acme", sans-serif;
@@ -114,41 +139,57 @@
         }
 
         .btn-add-card {
+            margin-top: 1rem;
             border-style: none;
             border-radius: 2rem;
-            background-color: var(--color-secondary);
+            background-image: linear-gradient(to left top, var(--white), var(--white-medium));      
             width: 8rem;
             height: 3rem;
-            color: var(--white);
+            color: var(--color-purple-primary-dark);
             outline: none;
-            transition: all 0.2s;
-
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
             &:hover {
                 transform: translateY(-0.3rem);
                 box-shadow: 0 1rem 2rem rgba(black, 0.2);
             }
+
+            svg {
+                font-size: 2rem;
+            }
         }
     }
 
+    .home {
+        height: 45rem;
+    }
+
+    .mycards {
+        height: 60rem;
+    }
+
     .btn-group {
+        margin: 2rem;
         button {
-            background-color: var(--color-secondary);
+            background-image: linear-gradient(to left top, var(--white), var(--white-medium));   
             border-style: none;
             margin-right: 0.2rem;
             padding: 0.1rem 0.2rem;
             border-radius: 1rem;
+            color: var(--color-blue-primary-dark);
         }
 
         a {
-            background-color: var(--color-secondary);
+            background-image: linear-gradient(to left top, var(--white), var(--white-medium));   
             border-style: none;
             margin-left: 0.2rem;
             padding: 0.1rem 0.1rem 0.1rem 0.2rem;
             border-radius: 1rem; 
         }
         svg {
-            color: var(--white);
+            color: var(--color-purple-primary-light);
             width: 3rem;
         }
     }
@@ -160,6 +201,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: var(--white);
 
     h3 {
         font-family: "Acme", sans-serif;
@@ -170,17 +212,29 @@
 .jumbotron {
 width: 50%;
 background-color: transparent;
+color: var(--white)
 }
 
 .form-control {
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin: 1rem;
+    border-radius: 2rem;
+    background-color: transparent;
+    border: 1px solid var(--color-secondary);
+    color: var(--white);
+
 }
+
 
 .btn {
     width: 12rem;
     height: 3rem;
     font-size: 1.5rem;
+}
+
+.btn-primary {
+  background-color: var(--color-purple-primary-light); 
+  border: none; 
 }
 }
 

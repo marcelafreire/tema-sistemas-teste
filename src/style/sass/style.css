@@ -1,11 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Acme&display=swap");
 :root {
-  --color-primary: #e7d5a7;
-  --color-secondary: #731b19;
-  --color-secondary-dark: #58100f;
+  --color-primary: #303452;
+  --color-secondary: #161a25;
+  --color-secondary-dark: #151827;
   --white: #ffffff;
+  --white-medium: #e7e6e6;
   --black: #000000;
   --box-shadow: 0 2rem 6rem rgba(0, 0, 0, .3);
+  --color-blue-primary: #161a25;
+  --color-blue-primary-dark: #05060a;
+  --color-purple-primary-dark: #303452;
+  --color-purple-primary-light: #5d556a;
+  --color-purple-primary-medium: #525492;
 }
 
 *,
@@ -28,15 +34,15 @@ body {
   line-height: 1.7;
   padding: 0;
   box-sizing: border-box;
-  background-color: var(--color-primary) !important;
+  background-image: linear-gradient(to left top, var(--color-blue-primary), var(--color-purple-primary-dark));
   width: 100%;
 }
 
 .nav {
   background-color: var(--color-secondary);
   height: 8rem;
-  font-family: "Acme", sans-serif;
-  font-size: 2rem;
+  font-size: 1.7rem;
+  box-shadow: var(--box-shadow);
 }
 .nav ul {
   list-style: none;
@@ -46,17 +52,20 @@ body {
   width: 100%;
 }
 .nav ul a {
-  color: var(--color-secondary);
-  border: 2px solid var(--color-secondary-dark);
-  border-radius: 1.5rem;
-  background-color: var(--color-primary);
-  padding: 0 0.9rem;
-  box-shadow: var(--box-shadow);
+  color: var(--white);
   text-decoration: none;
-  transition: all 0.2s;
+  transition: all 0.4s;
+  text-align: center;
 }
 .nav ul a :visited {
   color: var(--white);
+}
+.nav ul a :hover {
+  border-radius: 1.2rem;
+  width: 22rem;
+  background-color: var(--white);
+  color: var(--color-blue-primary-dark);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 }
 
 .container {
@@ -65,10 +74,12 @@ body {
   align-items: center;
   flex-direction: column;
   width: 100%;
+  color: var(--white);
 }
 .container h1 {
   font-family: "Acme", sans-serif;
   font-size: 4.6rem;
+  margin: 2rem;
 }
 .container .searchBar {
   flex-wrap: wrap;
@@ -78,22 +89,28 @@ body {
   margin: 4rem 0;
 }
 .container .searchBar .search-input {
-  background-color: var(--white);
+  background-color: transparent;
   margin: 0 1rem;
   border-radius: 1.5rem;
   padding-top: 0.2rem;
   width: 22rem;
-  height: 4rem;
+  height: 3.5rem;
   box-shadow: var(--box-shadow);
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px solid var(--color-secondary);
 }
 .container .searchBar .search-input input {
   border-style: none;
   border-radius: 1rem;
   outline: none;
+  background-color: transparent;
+  color: var(--white);
+}
+.container .searchBar .search-input input::placeholder {
+  color: var(--white);
 }
 .container .searchBar .search-input svg {
   margin: 0 1rem;
@@ -103,6 +120,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
+  color: var(--white);
 }
 .container .cards-container img {
   width: 80%;
@@ -112,9 +130,12 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  margin: 0.5rem 0.1rem;
+  margin: 1rem 0.5rem;
   text-align: center;
-  width: 30%;
+  width: 25%;
+  box-shadow: var(--box-shadow);
+  background-color: var(--color-purple-primary-dark);
+  border-radius: 2rem;
 }
 .container .cards-container .cards p {
   font-family: "Acme", sans-serif;
@@ -131,35 +152,51 @@ body {
   width: 50%;
 }
 .container .cards-container .cards .btn-add-card {
+  margin-top: 1rem;
   border-style: none;
   border-radius: 2rem;
-  background-color: var(--color-secondary);
+  background-image: linear-gradient(to left top, var(--white), var(--white-medium));
   width: 8rem;
   height: 3rem;
-  color: var(--white);
+  color: var(--color-purple-primary-dark);
   outline: none;
-  transition: all 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .container .cards-container .cards .btn-add-card:hover {
   transform: translateY(-0.3rem);
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 }
+.container .cards-container .cards .btn-add-card svg {
+  font-size: 2rem;
+}
+.container .cards-container .home {
+  height: 45rem;
+}
+.container .cards-container .mycards {
+  height: 60rem;
+}
+.container .cards-container .btn-group {
+  margin: 2rem;
+}
 .container .cards-container .btn-group button {
-  background-color: var(--color-secondary);
+  background-image: linear-gradient(to left top, var(--white), var(--white-medium));
   border-style: none;
   margin-right: 0.2rem;
   padding: 0.1rem 0.2rem;
   border-radius: 1rem;
+  color: var(--color-blue-primary-dark);
 }
 .container .cards-container .btn-group a {
-  background-color: var(--color-secondary);
+  background-image: linear-gradient(to left top, var(--white), var(--white-medium));
   border-style: none;
   margin-left: 0.2rem;
   padding: 0.1rem 0.1rem 0.1rem 0.2rem;
   border-radius: 1rem;
 }
 .container .cards-container .btn-group svg {
-  color: var(--white);
+  color: var(--color-purple-primary-light);
   width: 3rem;
 }
 
@@ -168,6 +205,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: var(--white);
 }
 .form h3 {
   font-family: "Acme", sans-serif;
@@ -177,15 +215,24 @@ body {
 .form .jumbotron {
   width: 50%;
   background-color: transparent;
+  color: var(--white);
 }
 .form .form-control {
-  font-size: 2rem;
+  font-size: 1.8rem;
   margin: 1rem;
+  border-radius: 2rem;
+  background-color: transparent;
+  border: 1px solid var(--color-secondary);
+  color: var(--white);
 }
 .form .btn {
   width: 12rem;
   height: 3rem;
   font-size: 1.5rem;
+}
+.form .btn-primary {
+  background-color: var(--color-purple-primary-light);
+  border: none;
 }
 
 /*# sourceMappingURL=style.css.map */

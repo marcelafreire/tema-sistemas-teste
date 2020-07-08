@@ -99,8 +99,9 @@ function MyCards({ cards, handleAddCard, myCards, handleSearch, search }) {
 
       <h1>Minhas Cartas</h1>
       <div className="cards-container">
+
         {myCards.map((card, idx) => (
-          <div key={idx} className="cards">
+          <div key={idx} className="cards mycards">
             <img src={card.img} alt={card.cardId} />
             <h3>{card.name}</h3>
             <h4>Tipo: {card.type}</h4>
