@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 import Alert from 'react-bootstrap/Alert';
 
+
+
 function GetCards({
   cards,
   getCards,
@@ -26,7 +28,6 @@ function GetCards({
 
     click_ref.current = handleAddCard;
   }, [carregarCards, cards, myCards, getCards, handleAddCard]);
-
 
 
   let filteredCard = cards.filter(
@@ -131,6 +132,7 @@ function GetCards({
         </div>
       ))}
       </div>
+
       
     </div>
   );

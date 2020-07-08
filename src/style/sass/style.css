@@ -53,6 +53,7 @@ body {
 }
 .nav ul a {
   color: var(--white);
+  width: 20rem;
   text-decoration: none;
   transition: all 0.4s;
   text-align: center;
@@ -61,8 +62,8 @@ body {
   color: var(--white);
 }
 .nav ul a :hover {
+  width: 20rem;
   border-radius: 1.2rem;
-  width: 22rem;
   background-color: var(--white);
   color: var(--color-blue-primary-dark);
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);

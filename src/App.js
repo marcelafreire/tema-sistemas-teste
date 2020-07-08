@@ -13,6 +13,7 @@ function App() {
   const [cards, setCards] = useState([]);
   const [myCards, setMyCards] = useState([]);
   const [exibirMsg, setExibirMsg] = useState(false);
+  const [id, setId] = useState("");
   const [erroMsg, setErroMsg] = useState(false);
   const [search, setSearch] = useState({
     searchName: "",
@@ -38,7 +39,6 @@ function App() {
     })
       .then((response) => {
         const filteredCards = response.data.Basic.map((card) => card.attack);
-        //   console.log(cards, 'cards')
         if (filteredCards !== undefined) {
           setCards(response.data.Basic);
         }
@@ -46,6 +46,19 @@ function App() {
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  function getId(cardId) {
+    const cardsDb = localStorage["myCards"];
+    let newCards = cardsDb ? JSON.parse(cardsDb) : [];
+    let newArr = [];
+
+    newCards.forEach((card) => {
+      if (card.cardId === cardId) {
+        return newArr.push(cardId);
+      }
+    });
+    setId(newArr)
   }
 
 
@@ -57,16 +70,14 @@ function App() {
     cards.forEach((obj) => {
       if (obj.cardId === cardId && newCards.length < 30) {
         return newCards.push(obj);
-      } else {
-        setErroMsg(true)
-      }
+      } 
     });
     setMyCards(newCards);
     localStorage["myCards"] = JSON.stringify(newCards);
     exibirMensagem(cardId)
   }
 
-  //exibir Mensagem de
+  //exibir Mensagem de erro e sucesso
   function exibirMensagem(card) {
     setExibirMsg(true);
     setTimeout(() => {
@@ -107,7 +118,7 @@ function App() {
             )}
           />
           <Route
-            exact
+      
             path="/meus-cards"
             render={(props) => (
               <MyCards
@@ -116,6 +127,7 @@ function App() {
                 handleAddCard={handleAddCard}
                 handleSearch={handleSearch}
                 search={search}
+                getId={getId}
                 {...props}
               />
             )}
@@ -130,7 +142,7 @@ function App() {
           <Route
             exact
             path="/editar-card/:id"
-            render={(props) => (<EditCard myCards={myCards} handleAddCard={handleAddCard} {...props} />)}
+            render={(props) => (<EditCard id={id}/>)}
           />
         </Switch>
     </div>

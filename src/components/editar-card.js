@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../style/style.css'
 
 
-function EditCard({myCards, handleAddCard}) {
+function EditCard({myCards, handleAddCard, id}) {
 
   const [exibirModal, showModal] = useState(false);
   const [formValidado, setFormValidado] = useState(false);
@@ -20,25 +20,22 @@ function EditCard({myCards, handleAddCard}) {
   });
   const [carregarCards, setCarregarCards] = useState(true);
 
-
   useEffect(() => {
    
     if (carregarCards) {
-        handleAddCard()
 
       const cardsDb = localStorage['myCards'];
       const allCards = cardsDb  ? JSON.parse(cardsDb ) : [];
-      const idCard = allCards.map(card => card.cardId)
-      const cards = allCards.filter(card => card.cardId === idCard);
+      const cards = allCards.filter(card => card.cardId === id);
       console.log(cards, 'cards')
 
       setCard(cards);
       setCarregarCards(false);
     }
-  }, [carregarCards, myCards, handleAddCard]);
+  }, [carregarCards, myCards, handleAddCard, id]);
 
 
-
+console.log(id, 'id')
 
   function goBack(event) {
     event.preventDefault();
@@ -50,18 +47,18 @@ function EditCard({myCards, handleAddCard}) {
     navigate('/');
   }
 
+
   function edit(event) {
     event.preventDefault();
     setFormValidado(true);
-    const myCard = myCards.map(card => card.cardId)
 
     if (event.currentTarget.checkValidity() === true) {
 
       const cardsDb = localStorage['myCards'];
-      let allCards = cardsDb  ? JSON.parse(cardsDb ) : [];
+      let allCards = cardsDb ? JSON.parse(cardsDb ) : [];
 
       allCards = allCards.map(obj => {
-        if (obj.cardId === myCard) {
+        if (obj.cardId === id) {
           obj.name = card.name;
           obj.health = card.health;
           obj.attack = card.attack;
@@ -77,11 +74,12 @@ function EditCard({myCards, handleAddCard}) {
     }
   }
 
-  function handleTxtCard(event) {
-    setCard(event.target.value);
-  }
-
-//   console.log(card, 'card')
+  function handleTxtCard(evt) {
+    const value = evt.target.value;
+    setCard({
+      ...card,
+      [evt.target.name]: value,
+    });  }
 
   return (
     <div className="form">
