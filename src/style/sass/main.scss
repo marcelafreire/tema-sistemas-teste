@@ -140,6 +140,11 @@
         max-width: 100%;
       }
 
+      @include respond (tab-port) {
+        flex: 40%;
+        max-width: 50%;
+      }
+
 
       p {
         font-family: "Acme", sans-serif;
@@ -189,6 +194,17 @@
 
     .home {
       height: 45rem;
+      
+      @include respond (phone) {
+        height: 28rem;
+        flex: 100%;
+        max-width: 100%;
+
+        @include respond (tab-port) {
+          flex: 40%;
+          max-width: 50%;
+        }
+      }
     }
 
     .mycards {
@@ -197,6 +213,11 @@
       @include respond (phone) {
         height:auto;
       }
+
+      @include respond (tab-port) {
+        height:auto;
+      }
+
     }
 
     .btn-group {
