@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Link } from "react-router-dom";
-import EditCard from "./editar-card";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSearch,
@@ -30,7 +29,7 @@ function MyCards({ cards, handleAddCard, myCards, handleSearch, search, getId, i
     //   });
     // }
     cardId.current = getId;
-  }, [carregarCards, cards, handleAddCard, myCards]);
+  }, [carregarCards, cards, handleAddCard, myCards, getId]);
 
   function handleDelete(idx) {
     const cardsDb = localStorage["myCards"];
@@ -116,7 +115,7 @@ function MyCards({ cards, handleAddCard, myCards, handleSearch, search, getId, i
 
       {/* <EditCard /> */}
 
-      <h1>Minhas Cartas</h1>
+      <h1>Meus Cards</h1>
       <div className="cards-container">
         {myCards.map((card, idx) => (
           <div key={idx} className="cards mycards">

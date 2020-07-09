@@ -196,14 +196,10 @@
       height: 45rem;
       
       @include respond (phone) {
-        height: 28rem;
+        height: auto;
+        padding-bottom: 3rem;
         flex: 100%;
         max-width: 100%;
-
-        @include respond (tab-port) {
-          flex: 40%;
-          max-width: 50%;
-        }
       }
     }
 
