@@ -6,6 +6,10 @@
   font-size: 1.7rem;
   box-shadow: var(--box-shadow);
 
+  @include respond (phone) {
+    height: 15rem;
+  }
+
   ul {
     list-style: none;
     display: flex;
@@ -13,6 +17,14 @@
     align-items: center;
     width: 100%;
 
+    @include respond (phone) {
+      flex-direction: column;
+    }
+    
+    li {
+      border-bottom: 1px solid var(--color-purple-primary-dark);
+
+    }
     a {
       color: var(--white);
       //   border-radius: 1.2rem;
@@ -73,6 +85,11 @@
       align-items: center;
       border: 1px solid var(--color-secondary);
 
+      @include respond (phone) {
+        margin: 1rem 0;
+      }
+      
+
       input {
         border-style: none;
         border-radius: 1rem;
@@ -95,11 +112,15 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 100%;
+    max-width: 100%;
     color: var(--white);
 
     img {
       width: 80%;
+
+      @include respond (phone) {
+        width: 70%;
+      }
     }
 
     .cards {
@@ -109,10 +130,16 @@
       align-items: center;
       margin: 1rem 0.5rem;
       text-align: center;
-      width: 25%;
+      max-width: 25%;
       box-shadow: var(--box-shadow);
       background-color: var(--color-purple-primary-dark);
       border-radius: 2rem;
+
+      @include respond (phone) {
+        flex: 100%;
+        max-width: 100%;
+      }
+
 
       p {
         font-family: "Acme", sans-serif;
@@ -166,6 +193,10 @@
 
     .mycards {
       height: 60rem;
+
+      @include respond (phone) {
+        height:auto;
+      }
     }
 
     .btn-group {
